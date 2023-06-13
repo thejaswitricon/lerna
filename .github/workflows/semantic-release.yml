@@ -1,26 +1,61 @@
-name: semantic release using lerna
+name: Versioning
 
 on:
   push:
     branches:
-      - master
-permissions: write-all
+      - master  # Modify this according to your branch name
 
 jobs:
-  version:
+  versioning:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        run: npm install lerna
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Modify this according to your Node.js version requirements
 
-      - name: Run test
-        run: npx lerna init
-        
-      - name: Update version
-        run: npm run new-version
+      - name: Install dependencies
+        run: npm ci
 
-      
+      - name: Lerna versioning
+        run: npx lerna version --conventional-commits --yes
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: ${{ github.ref }}
+          github_token: ${{ secrets.PAT_GITHUB }}
+
+      - name: Publish packages
+        run: npx lerna publish from-git --yes
+
+
+
+# name: semantic release using lerna
+
+# on:
+#   push:
+#     branches:
+#       - master
+# permissions: write-all
+
+# jobs:
+#   version:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+
+#       - name: Install Dependencies
+#         run: npm install lerna
+
+#       - name: Run test
+#         run: npx lerna init
+
+#       - name: Update version
+#         run: npm run new-version
