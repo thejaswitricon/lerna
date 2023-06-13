@@ -36,7 +36,7 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           branch: ${{ github.ref }}
-          github_token: ${{ secrets.PAT_GITHUB }}
+          github_token: ${{ secrets.PAT_GITHUB2 }}
 
       - name: Publish packages
         run: npx lerna publish from-git --yes
