@@ -7,7 +7,7 @@
     "test": "echo testing server with version: $npm_package_version "
   },
   "dependencies": {
-    "@walnut/common": "1.0.0"
+    "walnut": "^0.0.4"
   },
   "keywords": [],
   "author": "",
