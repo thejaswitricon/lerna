@@ -30,7 +30,7 @@ jobs:
 
 
       - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes
+        run: npx lerna version --conventional-commits --yes --github-token ${{ secrets.PAT_GITHUB2 }}
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
