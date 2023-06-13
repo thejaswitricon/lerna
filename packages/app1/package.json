@@ -1,0 +1,15 @@
+{
+  "name": "@client/app1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo testing server with version: $npm_package_version "
+  },
+  "dependencies": {
+    "@walnut/common": "1.0.0"
+  },  
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
