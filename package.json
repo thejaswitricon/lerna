@@ -1,7 +1,7 @@
 {
   "name": "lernaa",
   "private": "true",
-  "workspaces":[
+  "workspaces": [
     "packages/*"
   ],
   "scripts": {
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/thejaswitricon/lerna/issues"
   },
-  "homepage": "https://github.com/thejaswitricon/lerna#readme"
+  "homepage": "https://github.com/thejaswitricon/lerna#readme",
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  }
 }
