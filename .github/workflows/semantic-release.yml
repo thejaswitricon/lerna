@@ -19,7 +19,7 @@ jobs:
           node-version: 14  # Modify this according to your Node.js version requirements
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install lerna
 
       - name: Lerna versioning
         run: npx lerna version --conventional-commits --yes
