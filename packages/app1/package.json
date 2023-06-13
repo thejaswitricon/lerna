@@ -1,6 +1,6 @@
 {
   "name": "@walnut/app1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@walnut/common": "1.0.0"
-  },  
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
