@@ -3,7 +3,7 @@ name: Versioning
 on:
   push:
     branches:
-      - master  # Modify this according to your branch name
+      - master
 
 permissions: write-all
 
@@ -18,20 +18,29 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Modify this according to your Node.js version requirements
+          node-version: 14
 
       - name: Install dependencies
         run: npm install lerna
+
+      - name: Identify changes
+        id: changes
+        run: |
+          changed_packages=$(git diff --name-only HEAD^ HEAD | grep -E '^packages/' | cut -d/ -f2)
+          echo "::set-output name=packages::$changed_packages"
 
       - name: Commit changes
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add package-lock.json package.json
+          git add ${{ steps.changes.outputs.packages }}
           git commit -m "Committing changes before versioning"
 
+      - name: Initialize lerna
+        run: npx lerna init
+
       - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes --create-release
+        run: npx lerna version --conventional-commits --yes 
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
@@ -39,6 +48,53 @@ jobs:
           branch: ${{ github.ref }}
           tags: true
           github_token: ${{ secrets.PAT_GITHUB2 }}
+
+
+
+# name: Versioning
+
+# on:
+#   push:
+#     branches:
+#       - master  # Modify this according to your branch name
+
+# permissions: write-all
+
+# jobs:
+#   versioning:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 14  # Modify this according to your Node.js version requirements
+
+#       - name: Install dependencies
+#         run: npm install lerna
+
+#       - name: Commit changes
+#         run: |
+#           git config user.name "${{ github.actor }}"
+#           git config user.email "${{ github.actor }}@users.noreply.github.com"
+#           git add package-lock.json package.json
+#           git commit -m "Committing changes before versioning"
+
+#       - name: Initialize lerna
+#         run: npx lerna init
+
+#       - name: Lerna versioning
+#         run: npx lerna version --conventional-commits --yes 
+
+#       - name: Push changes
+#         uses: ad-m/github-push-action@v0.6.0
+#         with:
+#           branch: ${{ github.ref }}
+#           tags: true
+#           github_token: ${{ secrets.PAT_GITHUB2 }}
 
 
 

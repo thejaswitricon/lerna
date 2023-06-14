@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/thejaswitricon/lerna#readme",
   "devDependencies": {
-    "lerna": "^6.6.2"
+    "lerna": "^6.6.1"
   }
 }
