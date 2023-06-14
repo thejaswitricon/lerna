@@ -26,14 +26,13 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
-          modified_folders=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.before }} ${{ github.sha }} | awk -F/ '{print $1}' | uniq)
+          modified_folders=$(git diff --name-only --diff-filter=ACMRT HEAD ${{ github.sha }} | awk -F/ '{print $1}' | uniq)
 
           for folder in $modified_folders; do
             git add "$folder/package.json"
           done
 
           git commit -m "Committing changes before versioning"
-
 
 
       - name: Lerna versioning
