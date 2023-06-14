@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3](https://github.com/thejaswitricon/lerna/compare/@walnut/app1@1.8.2...@walnut/app1@1.8.3) (2023-06-14)
+
+
+### Bug Fixes
+
+* test ([99aec4a](https://github.com/thejaswitricon/lerna/commit/99aec4a23caf7853b6727948c197a3917ac33623))
+
+
+
+
+
+
 ## 1.8.2 (2023-06-14)
 
 
