@@ -25,13 +25,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-
-          modified_folders=$(git diff --name-only --diff-filter=ACMRT HEAD ${{ github.sha }} | awk -F/ '{print $1}' | uniq)
-
-          for folder in $modified_folders; do
-            git add "$folder/package.json"
-          done
-
+          git add package-lock.json package.json
           git commit -m "Committing changes before versioning"
 
 
@@ -44,8 +38,15 @@ jobs:
           branch: ${{ github.ref }}
           github_token: ${{ secrets.PAT_GITHUB2 }}
 
-      - name: Publish packages
-        run: npx lerna publish from-git --yes
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ''  # Add file paths if you want to include specific files in the release
+          body: ''  # Add release notes or additional information about the release
+          tag_name: ${{ steps.lerna_version.outputs.new_version }}
+          token: ${{ secrets.PAT_GITHUB2 }}
+      # - name: Publish packages
+      #   run: npx lerna publish from-git --yes
 
 
 
