@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/thejaswitricon/lerna/compare/v1.4.1...v1.5.0) (2023-06-14)
+
+
+### Features
+
+* **root:** adds npm, lerna and packages ([4cf589e](https://github.com/thejaswitricon/lerna/commit/4cf589ec76d516a91524241ca708a82b11cc62b1))
+
+
+
+
+
 ## [1.4.1](https://github.com/thejaswitricon/lerna/compare/v1.4.0...v1.4.1) (2023-06-14)
 
 
