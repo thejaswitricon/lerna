@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/thejaswitricon/lerna#readme",
   "devDependencies": {
-    "lerna": "^6.6.1"
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.3",
+    "lerna": "^6.6.1",
+    "semantic-release": "^21.0.5"
   }
 }
