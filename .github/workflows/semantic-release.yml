@@ -25,12 +25,19 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add package-lock.json package.json
+
+          modified_folders=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.before }} ${{ github.sha }} | awk -F/ '{print $1}' | uniq)
+
+          for folder in $modified_folders; do
+            git add "$folder/package.json"
+          done
+
           git commit -m "Committing changes before versioning"
 
 
+
       - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes --since ${{ github.event.before }}
+        run: npx lerna version --conventional-commits --yes
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
