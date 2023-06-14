@@ -1,0 +1,103 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   'conventional-commits': true,
+0 silly argv   conventionalCommits: true,
+0 silly argv   yes: true,
+0 silly argv   y: true,
+0 silly argv   lernaVersion: '6.6.1',
+0 silly argv   '$0': '..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\lerna\\dist\\cli.js'
+0 silly argv }
+1 notice cli v6.6.1
+2 verbose rootPath C:\Users\Thejaswi.CY\Desktop\lerna\lerna
+3 info current version 1.1.10
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch master
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 1
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v1.1.10-2-g42395dd" => {"lastTagName":"v1.1.10","lastVersion":"v1.1.10","refCount":"2","sha":"42395dd","isDirty":false}
+14 info Looking for changed packages since v1.1.10
+15 silly checking diff packages/app1
+16 silly no diff found in @walnut/app1
+17 silly checking diff packages/app2
+18 silly found diff in packages/app2/index.js
+19 verbose filtered diff [ 'packages/app2/index.js' ]
+20 verbose updated @walnut/app2
+21 verbose git-describe undefined => "v1.1.10-2-g42395dd"
+22 silly git-describe parsed => {"lastTagName":"v1.1.10","lastVersion":"v1.1.10","refCount":"2","sha":"42395dd","isDirty":false}
+23 silly fixed for @walnut/app2 at C:\Users\Thejaswi.CY\Desktop\lerna\lerna\packages\app2
+24 verbose getChangelogConfig using preset "conventional-changelog-angular"
+25 silly npa Result {
+25 silly npa   type: 'tag',
+25 silly npa   registry: true,
+25 silly npa   where: undefined,
+25 silly npa   raw: 'conventional-changelog-angular',
+25 silly npa   name: 'conventional-changelog-angular',
+25 silly npa   escapedName: 'conventional-changelog-angular',
+25 silly npa   scope: undefined,
+25 silly npa   rawSpec: '',
+25 silly npa   saveSpec: null,
+25 silly npa   fetchSpec: 'latest',
+25 silly npa   gitRange: undefined,
+25 silly npa   gitCommittish: undefined,
+25 silly npa   hosted: undefined
+25 silly npa }
+26 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+27 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+28 verbose fixed increment 1.1.10 by patch
+29 info auto-confirmed
+30 info execute Skipping releases
+31 silly lifecycle No script for "preversion" in "lernaa", continuing
+32 silly lifecycle No script for "preversion" in "@walnut/app2", continuing
+33 verbose version @walnut/app2 has no lockfile. Skipping lockfile update.
+34 silly lifecycle No script for "version" in "@walnut/app2", continuing
+35 silly fixed for @walnut/app2 at C:\Users\Thejaswi.CY\Desktop\lerna\lerna\packages\app2
+36 silly fixed writing new entry: "## [1.1.11](https://github.com/thejaswitricon/lerna/compare/v1.1.10...v1.1.11) (2023-06-14)\n\n**Note:** Version bump only for package @walnut/app2\n\n\n\n"
+37 verbose fixed wrote C:\Users\Thejaswi.CY\Desktop\lerna\lerna\packages\app2\CHANGELOG.md
+38 silly root for lernaa at C:\Users\Thejaswi.CY\Desktop\lerna\lerna
+39 silly root writing new entry: "## [1.1.11](https://github.com/thejaswitricon/lerna/compare/v1.1.10...v1.1.11) (2023-06-14)\n\n**Note:** Version bump only for package lernaa\n\n\n\n"
+40 verbose root wrote C:\Users\Thejaswi.CY\Desktop\lerna\lerna\CHANGELOG.md
+41 verbose version Updating root package-lock.json
+42 silly lifecycle No script for "version" in "lernaa", continuing
+43 silly gitAdd [
+43 silly gitAdd   'packages/app2/package.json',
+43 silly gitAdd   'packages/app2/CHANGELOG.md',
+43 silly gitAdd   'CHANGELOG.md',
+43 silly gitAdd   'lerna.json',
+43 silly gitAdd   'package-lock.json'
+43 silly gitAdd ]
+44 silly gitCommit v1.1.11
+45 verbose git [ 'commit', '-m', 'v1.1.11' ]
+46 silly gitTag v1.1.11 git tag %s -m %s
+47 verbose git [ 'tag', 'v1.1.11', '-m', 'v1.1.11' ]
+48 silly lifecycle No script for "postversion" in "@walnut/app2", continuing
+49 silly lifecycle No script for "postversion" in "lernaa", continuing
+50 info git Pushing tags...
+51 silly gitPush origin master
+52 warn gitPush error: atomic push failed for ref refs/heads/master. status: 5
+52 warn gitPush
+52 warn gitPush fatal: protocol error: bad line length character: erro
+52 warn gitPush To https://github.com/thejaswitricon/lerna.git
+52 warn gitPush  ! [rejected]        master -> master (fetch first)
+52 warn gitPush error: failed to push some refs to 'https://github.com/thejaswitricon/lerna.git'
+52 warn gitPush hint: Updates were rejected because the remote contains work that you do
+52 warn gitPush hint: not have locally. This is usually caused by another repository pushing
+52 warn gitPush hint: to the same ref. You may want to first integrate the remote changes
+52 warn gitPush hint: (e.g., 'git pull ...') before pushing again.
+52 warn gitPush hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+53 info gitPush --atomic failed, attempting non-atomic push
+54 error Error: Command failed with exit code 1: git push --follow-tags --no-verify origin master
+54 error To https://github.com/thejaswitricon/lerna.git
+54 error  ! [rejected]        master -> master (fetch first)
+54 error error: failed to push some refs to 'https://github.com/thejaswitricon/lerna.git'
+54 error hint: Updates were rejected because the remote contains work that you do
+54 error hint: not have locally. This is usually caused by another repository pushing
+54 error hint: to the same ref. You may want to first integrate the remote changes
+54 error hint: (e.g., 'git pull ...') before pushing again.
+54 error hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+54 error     at makeError (C:\Users\Thejaswi.CY\AppData\Roaming\npm\node_modules\lerna\node_modules\execa\lib\error.js:59:11)
+54 error     at handlePromise (C:\Users\Thejaswi.CY\AppData\Roaming\npm\node_modules\lerna\node_modules\execa\index.js:114:26)
