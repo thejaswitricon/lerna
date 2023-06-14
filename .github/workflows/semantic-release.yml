@@ -37,9 +37,9 @@ jobs:
         run: npx lerna version --conventional-commits --yes 
 
       - name: Release with Semantic Release
-        run: npx semantic-release
         with:
           github_token: ${{ secrets.PAT_GITHUB2}}
+        run: npx semantic-release
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
