@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/thejaswitricon/lerna/compare/v1.2.2...v1.3.0) (2023-06-14)
+
+
+### Features
+
+* test ([4ed02ac](https://github.com/thejaswitricon/lerna/commit/4ed02aca48b5dc13846cf9f203a1a2cdee9c2079))
+
+
+
+
+
 ## [1.2.2](https://github.com/thejaswitricon/lerna/compare/v1.2.1...v1.2.2) (2023-06-14)
 
 
