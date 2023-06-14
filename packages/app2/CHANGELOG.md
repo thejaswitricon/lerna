@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.17](https://github.com/thejaswitricon/lerna/compare/@walnut/app2@1.1.16...@walnut/app2@1.1.17) (2023-06-14)
+
+
+### Bug Fixes
+
+* **root:** index.js ([ae908a1](https://github.com/thejaswitricon/lerna/commit/ae908a1313c52096f43b0e7d0cc489be85401fed))
+
+
+
+
+
 ## 1.1.16 (2023-06-14)
 
 
