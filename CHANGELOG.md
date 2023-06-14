@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/thejaswitricon/lerna/compare/v1.1.8...v1.1.9) (2023-06-14)
+
+
+### Bug Fixes
+
+* test ([64f41ce](https://github.com/thejaswitricon/lerna/commit/64f41ce6df63117fd685b2970040efaf905b694e))
+
+
+
+
+
+
 ## 1.1.8 (2023-06-14)
 
 **Note:** Version bump only for package lernaa
