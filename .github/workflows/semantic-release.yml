@@ -38,6 +38,8 @@ jobs:
 
       - name: Release with Semantic Release
         run: npx semantic-release
+        with:
+          github_token: ${{ secrets.PAT_GITHUB2}}
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
