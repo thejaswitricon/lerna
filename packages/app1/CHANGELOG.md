@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.12 (2023-06-14)
+
+
+### Bug Fixes
+
+* test ([b44a7f1](https://github.com/thejaswitricon/lerna/commit/b44a7f1a11f085f9d7508fb04c378b057237f1cf))
+
+
+
+
+
 ## 1.1.11 (2023-06-14)
 
 **Note:** Version bump only for package @walnut/app1
