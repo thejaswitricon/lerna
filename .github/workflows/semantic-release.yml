@@ -31,7 +31,13 @@ jobs:
           git commit -m "Committing changes before versioning"
 
       - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes --create-release=github
+        run: npx lerna version --conventional-commits --yes
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.lerna_version.outputs.new_version }}
+          token: ${{ secrets.PAT_GITHUB2 }}
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
@@ -40,11 +46,6 @@ jobs:
           tags: true
           github_token: ${{ secrets.PAT_GITHUB2 }}
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ steps.lerna_version.outputs.new_version }}
-          token: ${{ secrets.PAT_GITHUB2 }}
 
 
 
