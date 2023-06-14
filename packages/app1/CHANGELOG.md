@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/thejaswitricon/lerna/compare/@walnut/app1@1.6.1...@walnut/app1@1.7.0) (2023-06-14)
+
+
+### Features
+
+* **root:** adds npm, lerna and packages ([c62252d](https://github.com/thejaswitricon/lerna/commit/c62252d1f8f655e8781508e16aeb14fb0dc20ab1))
+
+
+
+
+
 ## [1.6.1](https://github.com/thejaswitricon/lerna/compare/@walnut/app1@1.6.0...@walnut/app1@1.6.1) (2023-06-14)
 
 **Note:** Version bump only for package @walnut/app1
