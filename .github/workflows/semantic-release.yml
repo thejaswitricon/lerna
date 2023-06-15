@@ -3,7 +3,7 @@ name: Versioning
 on:
   push:
     branches:
-      - master  # Modify this according to your branch name
+      - master
 
 permissions: write-all
 
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Modify this according to your Node.js version requirements
+          node-version: 14
 
       - name: Install dependencies
         run: npm install lerna
@@ -30,11 +30,16 @@ jobs:
           git add package-lock.json package.json
           git commit -m "Committing changes before versioning"
 
-      - name: Initialize lerna
-        run: npx lerna init
+      - name: Get changed packages
+        id: changed-packages
+        run: |
+          CHANGED_PACKAGES=$(git diff --name-only HEAD~1..HEAD packages/ | cut -d/ -f2 | sort -u)
+          echo "::set-output name=packages::${CHANGED_PACKAGES}"
 
       - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes 
+        run: |
+          CHANGED_PACKAGES="${{ steps.changed-packages.outputs.packages }}"
+          npx lerna version --conventional-commits --yes --scope "${CHANGED_PACKAGES}"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
@@ -45,14 +50,15 @@ jobs:
 
 
 
-
 # name: Versioning
 
 # on:
 #   push:
 #     branches:
 #       - master  # Modify this according to your branch name
+
 # permissions: write-all
+
 # jobs:
 #   versioning:
 #     runs-on: ubuntu-latest
@@ -76,18 +82,21 @@ jobs:
 #           git add package-lock.json package.json
 #           git commit -m "Committing changes before versioning"
 
+#       - name: Initialize lerna
+#         run: npx lerna init
 
 #       - name: Lerna versioning
-#         run: npx lerna version --conventional-commits --yes
+#         run: npx lerna version --conventional-commits --yes 
 
 #       - name: Push changes
 #         uses: ad-m/github-push-action@v0.6.0
 #         with:
 #           branch: ${{ github.ref }}
+#           tags: true
 #           github_token: ${{ secrets.PAT_GITHUB2 }}
 
-      # - name: Publish packages
-      #   run: npx lerna publish from-git --yes
+
+
 
 
 
