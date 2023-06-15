@@ -24,23 +24,12 @@ jobs:
         run: npm install lerna
 
       - name: Commit changes
-        id: commit-changes
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add package-lock.json package.json
-          CHANGED_FILES=$(git diff --name-only)
-          COMMIT_MESSAGE="Committing changes before versioning"
-          if [ -n "$CHANGED_FILES" ]; then
-            COMMIT_MESSAGE="$COMMIT_MESSAGE\n\nChanged files:\n$CHANGED_FILES"
-          fi
-          git commit -m "$COMMIT_MESSAGE"
-          echo "::set-output name=changed-files::${CHANGED_FILES}"
-
-      - name: Access changed files
-        run: |
-          echo "Changed files: ${{ steps.commit-changes.outputs.changed-files }}"
-
+          git commit -m "Committing changes before versioning"
+          git diff-tree --no-commit-id --name-only -r HEAD
 
       - name: Initialize lerna
         run: npx lerna init
