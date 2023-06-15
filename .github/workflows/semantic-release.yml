@@ -30,15 +30,10 @@ jobs:
           git add package-lock.json package.json
           git commit -m "Committing changes before versioning"
 
-      - name: Get last release tag
-        id: last-release
-        run: echo "::set-output name=tag::$(git describe --abbrev=0 --tags)"
-
       - name: Get changed packages
         id: changed-packages
         run: |
-          LAST_RELEASE="${{ steps.last-release.outputs.tag }}"
-          CHANGED_PACKAGES=$(npx lerna ls --since="${LAST_RELEASE}" --json | jq -r '.[].name' | paste -sd "," -)
+          CHANGED_PACKAGES=$(npx lerna changed --loglevel=silent --json | jq -r '.[].name' | paste -sd "," -)
           echo "::set-output name=packages::${CHANGED_PACKAGES}"
 
       - name: Lerna versioning
