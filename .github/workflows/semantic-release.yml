@@ -33,7 +33,8 @@ jobs:
       - name: Get changed packages
         id: changed-packages
         run: |
-          CHANGED_PACKAGES=$(npx lerna changed --loglevel=silent --json | jq -r '.[].name' | paste -sd "," -)
+          LAST_RELEASE_TAG=$(git describe --abbrev=0 --tags)
+          CHANGED_PACKAGES=$(git diff --name-only "${LAST_RELEASE_TAG}...HEAD" | awk -F '/' '/package\.json/ { print $2 }' | paste -sd "," -)
           echo "::set-output name=packages::${CHANGED_PACKAGES}"
 
       - name: Lerna versioning
