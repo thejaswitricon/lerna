@@ -27,22 +27,26 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add package-lock.json package.json
-          git commit -m "Committing changes before versioning"
-          git diff-tree --no-commit-id --name-only -r HEAD
+          CHANGED_FILE=$(git diff --name-only)
+          if [ -n "$CHANGED_FILE" ]; then
+            git add "$CHANGED_FILE"
+            git commit -m "Committing changes to $CHANGED_FILE before versioning"
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Initialize lerna
         run: npx lerna init
 
-      # - name: Lerna versioning
-      #   run: npx lerna version --conventional-commits --yes 
+      - name: Lerna versioning
+        run: npx lerna version --conventional-commits --yes 
 
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@v0.6.0
-      #   with:
-      #     branch: ${{ github.ref }}
-      #     tags: true
-      #     github_token: ${{ secrets.PAT_GITHUB2 }}
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: ${{ github.ref }}
+          tags: true
+          github_token: ${{ secrets.PAT_GITHUB2 }}
 
 
 
