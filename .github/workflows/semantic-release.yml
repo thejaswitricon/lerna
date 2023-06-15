@@ -24,6 +24,7 @@ jobs:
         run: npm install lerna
 
       - name: Commit changes
+        id: commit-changes
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
@@ -34,6 +35,12 @@ jobs:
             COMMIT_MESSAGE="$COMMIT_MESSAGE\n\nChanged files:\n$CHANGED_FILES"
           fi
           git commit -m "$COMMIT_MESSAGE"
+          echo "::set-output name=changed-files::${CHANGED_FILES}"
+
+      - name: Access changed files
+        run: |
+          echo "Changed files: ${{ steps.commit-changes.outputs.changed-files }}"
+
 
       - name: Initialize lerna
         run: npx lerna init
