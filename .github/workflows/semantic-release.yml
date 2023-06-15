@@ -30,16 +30,21 @@ jobs:
           git add package-lock.json package.json
           git commit -m "Committing changes before versioning"
 
+      - name: Get last release tag
+        id: last-release
+        run: echo "::set-output name=tag::$(git describe --abbrev=0 --tags)"
+
       - name: Get changed packages
         id: changed-packages
         run: |
-          CHANGED_PACKAGES=$(npx lerna changed --loglevel=silent --json | jq -r '.[].name' | paste -sd "," -)
+          LAST_RELEASE="${{ steps.last-release.outputs.tag }}"
+          CHANGED_PACKAGES=$(npx lerna ls --since="${LAST_RELEASE}" --json | jq -r '.[].name' | paste -sd "," -)
           echo "::set-output name=packages::${CHANGED_PACKAGES}"
 
       - name: Lerna versioning
         run: |
           CHANGED_PACKAGES="${{ steps.changed-packages.outputs.packages }}"
-          npx lerna version --conventional-commits --yes --scope="${CHANGED_PACKAGES}"
+          npx lerna version --conventional-commits --yes --force-publish="${CHANGED_PACKAGES}"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
@@ -47,6 +52,7 @@ jobs:
           branch: ${{ github.ref }}
           tags: true
           github_token: ${{ secrets.PAT_GITHUB2 }}
+
 
 
 
