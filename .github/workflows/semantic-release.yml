@@ -31,11 +31,15 @@ jobs:
           git commit -m "Committing changes before versioning"
           git diff --name-only --cached
 
-      - name: Get changed directories
-        id: changed_dirs
-        run: |
-          echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ '{print $0}' | sort -u)"
-
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - run: |
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            if [[ $changed_file == *"modules"* ]]; then
+              folder_path=$(dirname "${changed_file}")
+              echo "${folder_path}."
+            fi
+          done
       - name: Initialize lerna
         run: npx lerna init
 
