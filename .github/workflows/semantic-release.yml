@@ -23,29 +23,40 @@ jobs:
       - name: Install dependencies
         run: npm install lerna
 
-      - name: Commit changes
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add --all
-          git commit -m "Committing changes before versioning"
-          git diff --name-only --cached
+      # - name: Commit changes
+      #   run: |
+      #     git config user.name "${{ github.actor }}"
+      #     git config user.email "${{ github.actor }}@users.noreply.github.com"
+      #     git add --all
+      #     git commit -m "Committing changes before versioning"
+      #     git diff --name-only --cached
 
-      - name: Initialize lerna
-        run: npx lerna init
+      # - name: Initialize lerna
+      #   run: npx lerna init
 
-      - id: files
-        uses: jitterbit/get-changed-files@v1
-      - run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            if [[ $changed_file == *"packages"* ]]; then
-              folder_path=$(dirname "${changed_file}")
-              echo "Versioning ${folder_path}/package.json..."
+      # - id: files
+      #   uses: jitterbit/get-changed-files@v1
+      # - run: |
+      #     for changed_file in ${{ steps.files.outputs.all }}; do
+      #       if [[ $changed_file == *"packages"* ]]; then
+      #         folder_path=$(dirname "${changed_file}")
+      #         echo "Versioning ${folder_path}/package.json..."
               
-              lerna version --conventional-commits --yes
-              cd -
-            fi
-          done
+      #         lerna version --conventional-commits --yes
+      #         cd -
+      #       fi
+      #     done
+
+      - name: Determine changed package
+        id: changed_package
+        run: |
+          git diff --name-only HEAD^ HEAD | grep packages/ | cut -d/ -f2 | uniq
+
+      - name: Run Lerna version
+        run: |
+          cd ${{ github.workspace }}
+          npx lerna version --conventional-commits --yes --scope ${{ steps.changed_package.outputs.stdout }}
+
    
       # - name: Lerna versioning
       #   run: npx lerna version --conventional-commits --yes 
