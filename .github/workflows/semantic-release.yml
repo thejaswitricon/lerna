@@ -31,6 +31,9 @@ jobs:
           git commit -m "Committing changes before versioning"
           git diff --name-only --cached
 
+      - name: Initialize lerna
+        run: npx lerna init
+
       - id: files
         uses: jitterbit/get-changed-files@v1
       - run: |
@@ -44,9 +47,6 @@ jobs:
             fi
           done
    
-      - name: Initialize lerna
-        run: npx lerna init
-
       # - name: Lerna versioning
       #   run: npx lerna version --conventional-commits --yes 
 
