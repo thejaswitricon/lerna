@@ -3,7 +3,7 @@ name: Lerna Versioning
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   versioning:
@@ -19,23 +19,24 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm install lerna
+        run: npm ci
 
       - name: Determine changed packages
         id: changed_packages
         run: |
-          changed_files=$(git diff --name-only HEAD^ HEAD)
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
           changed_packages=$(echo "$changed_files" | grep -oE "packages/[^/]+" | sort | uniq)
           echo "::set-output name=packages::$changed_packages"
 
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
-          lerna version --conventional-commits --yes --force-publish ${{ steps.changed_packages.outputs.packages }}
+          npx lerna version --conventional-commits --yes --force-publish ${{ steps.changed_packages.outputs.packages }}
 
       - name: Push changes
         run: |
           git push --follow-tags
+
 
 
       # - name: Push changes
