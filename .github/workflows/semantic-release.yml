@@ -40,6 +40,7 @@ jobs:
               echo "${folder_path}."
             fi
           done
+          
       - name: Initialize lerna
         run: npx lerna init
 
