@@ -38,7 +38,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            if [[ $changed_file == *"modules"* ]]; then
+            if [[ $changed_file == *"packages"* ]]; then
               folder_path=$(dirname "${changed_file}")
               echo "Versioning ${folder_path}/package.json..."
               cd ${folder_path}
