@@ -27,13 +27,8 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          CHANGED_FILE=$(git diff --name-only)
-          if [ -n "$CHANGED_FILE" ]; then
-            git add "$CHANGED_FILE"
-            git commit -m "Committing changes to $CHANGED_FILE before versioning"
-          else
-            echo "No changes to commit."
-          fi
+          git add --all
+          git commit -m "Committing changes before versioning"
 
       - name: Initialize lerna
         run: npx lerna init
