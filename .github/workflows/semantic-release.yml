@@ -42,7 +42,7 @@ jobs:
               folder_path=$(dirname "${changed_file}")
               echo "Versioning ${folder_path}/package.json..."
               cd ${folder_path}
-              lerna version --exact --no-git-tag-version --no-push --yes
+              lerna version --conventional-commits --yes
               cd -
             fi
           done
