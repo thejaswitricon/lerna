@@ -41,7 +41,7 @@ jobs:
             if [[ $changed_file == *"packages"* ]]; then
               folder_path=$(dirname "${changed_file}")
               echo "Versioning ${folder_path}/package.json..."
-              cd ${folder_path}
+              
               lerna version --conventional-commits --yes
               cd -
             fi
