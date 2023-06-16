@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.26 (2023-06-16)
+
+
+### Bug Fixes
+
+* **root:** index.js ([14f10d7](https://github.com/thejaswitricon/lerna/commit/14f10d728e68962a9f795e1db88c37f066bc4397))
+
+
+
+
+
 ## 1.1.25 (2023-06-15)
 
 
