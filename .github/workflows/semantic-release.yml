@@ -37,15 +37,18 @@ jobs:
           for changed_file in ${{ steps.files.outputs.all }}; do
             if [[ $changed_file == *"modules"* ]]; then
               folder_path=$(dirname "${changed_file}")
-              echo "${folder_path}."
+              echo "Versioning ${folder_path}/package.json..."
+              cd ${folder_path}
+              lerna version --exact --no-git-tag-version --no-push --yes
+              cd -
             fi
           done
-          
+   
       - name: Initialize lerna
         run: npx lerna init
 
-      - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes 
+      # - name: Lerna versioning
+      #   run: npx lerna version --conventional-commits --yes 
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
