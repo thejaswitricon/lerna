@@ -1,7 +1,7 @@
 {
   "packages": [
-    "packages/aws/eks/eks-simple/modules/*",
-    "packages/aws/ecs/ecs-simple/modules/*"
+    "packages/aws/eks/eks-simple/*",
+    "packages/aws/ecs/ecs-simple/*"
   ],
   "useWorkspaces": true,
   "npmClient": "yarn",
