@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+
 permissions: write-all
 
 jobs:
@@ -22,21 +23,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Commit changes to package-lock.json
+      - name: Determine changed packages
+        id: changed_packages
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "your-email@example.com"
-          git add package-lock.json
-          git commit -m "Committing changes to package-lock.json"
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          changed_packages=$(echo "$changed_files" | grep -oE "packages/[^/]+" | sort | uniq)
+          echo "::set-output name=packages::$changed_packages"
 
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
-          npx lerna version --conventional-commits --yes
+          npx lerna version ${{ steps.changed_packages.outputs.packages }} --conventional-commits --yes --force-publish
 
       - name: Push changes
         run: |
           git push --follow-tags
+
 
 
 
