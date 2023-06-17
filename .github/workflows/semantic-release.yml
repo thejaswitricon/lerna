@@ -25,19 +25,19 @@ jobs:
 
       - name: Get last successful commit hash
         id: last_commit
-        run: echo "::set-output name=commit::$(git rev-parse HEAD)"
+        run: echo "::set-output name=commit::$(git log -1 --format=%H)"
 
       - name: Determine changed packages
         id: changed_packages
         run: |
-          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          changed_files=$(git diff --name-only ${{ steps.last_commit.outputs.commit }} ${{ github.sha }})
           changed_packages=$(echo "$changed_files" | grep -oE "packages/[^/]+" | sort | uniq)
           echo "::set-output name=packages::$changed_packages"
 
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
-          npx lerna version --conventional-commits --yes --since=${{ steps.last_commit.outputs.commit }} --force-publish ${{ steps.changed_packages.outputs.packages }}
+          npx lerna version --conventional-commits --yes --force-publish ${{ steps.changed_packages.outputs.packages }}
 
       - name: Push changes
         run: |
