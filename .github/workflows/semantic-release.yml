@@ -29,6 +29,9 @@ jobs:
           git add package-lock.json
           git commit -m "Committing changes to package-lock.json"
 
+      - name: Initialize lerna
+        run: npm lerna init --independent
+
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
