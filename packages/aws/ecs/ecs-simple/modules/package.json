@@ -1,6 +1,6 @@
 {
   "name": "@ecs-simple/app2",
-  "version": "1.1.34",
+  "version": "1.1.35",
   "description": "",
   "main": "index.js",
   "scripts": {
