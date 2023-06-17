@@ -23,6 +23,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Get last successful commit hash
+        id: last_commit
+        run: echo "::set-output name=commit::$(git rev-parse HEAD)"
+
       - name: Determine changed packages
         id: changed_packages
         run: |
@@ -33,13 +37,11 @@ jobs:
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
-          npx lerna version ${{ steps.changed_packages.outputs.packages }} --conventional-commits --yes --force-publish
+          npx lerna version --conventional-commits --yes --since=${{ steps.last_commit.outputs.commit }} --force-publish ${{ steps.changed_packages.outputs.packages }}
 
       - name: Push changes
         run: |
           git push --follow-tags
-
-
 
 
 
