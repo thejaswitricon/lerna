@@ -21,19 +21,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Commit changes to package-lock.json
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+          git add package-lock.json
+          git commit -m "Committing changes to package-lock.json"
+
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
           npx lerna version --conventional-commits --yes
 
-      - name: Set Git user
-        run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "your-email@example.com"
-
       - name: Push changes
         run: |
           git push --follow-tags
+
 
 
 
