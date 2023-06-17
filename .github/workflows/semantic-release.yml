@@ -36,6 +36,8 @@ jobs:
 
       - name: Run Lerna version
         run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
           cd ${{ github.workspace }}
           npx lerna version --conventional-commits --yes --force-publish ${{ steps.changed_packages.outputs.packages }}
 
