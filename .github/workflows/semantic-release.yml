@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-
 permissions: write-all
 
 jobs:
@@ -23,22 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Determine changed packages
-        id: changed_packages
-        run: |
-          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-          changed_packages=$(echo "$changed_files" | grep -oE "packages/[^/]+" | sort | uniq)
-          echo "::set-output name=packages::$changed_packages"
-
-      - name: Check if packages changed
-        run: |
-          if [[ -n "${{ steps.changed_packages.outputs.packages }}" ]]; then
-            echo "Changes detected in packages directory."
-          else
-            echo "No changes detected in packages directory."
-            exit 0
-          fi
-
       - name: Commit changes to package-lock.json
         run: |
           git config --global user.name "Your Name"
@@ -49,12 +32,15 @@ jobs:
       - name: Run Lerna version
         run: |
           cd ${{ github.workspace }}
-          npx lerna version --conventional-commits --yes
+          if [[ "${{ steps.check_packages_changed.outputs.packages_changed }}" == "true" ]]; then
+            npx lerna version --conventional-commits --yes
+          else
+            echo "Skipping Lerna versioning as there are no changes in packages directory."
+          fi
 
       - name: Push changes
         run: |
           git push --follow-tags
-
 
 
 
