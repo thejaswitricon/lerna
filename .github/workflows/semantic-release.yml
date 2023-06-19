@@ -26,7 +26,7 @@ jobs:
       - name: Check for changes
         id: check-changes
         run: |
-          git diff --name-only HEAD~1 HEAD | grep '^packages' > changes.txt
+          git diff --name-only origin/master -- packages/ > changes.txt
           cat changes.txt
 
       - name: Commit changes
