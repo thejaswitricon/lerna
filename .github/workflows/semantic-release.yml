@@ -22,6 +22,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check for changes in packages folder
+        id: check_changes
+        run: |
+          echo "::set-output name=changed::$(git diff --name-only HEAD^..HEAD packages)"
+
+      - name: Run Lerna version
+        if: steps.check_changes.outputs.changed
+        run: |
+          cd ${{ github.workspace }}
+          npx lerna version --conventional-commits --yes
+
       - name: Commit changes to package-lock.json
         run: |
           git config --global user.name "Your Name"
@@ -29,18 +40,10 @@ jobs:
           git add package-lock.json
           git commit -m "Committing changes to package-lock.json"
 
-      - name: Run Lerna version
-        run: |
-          cd ${{ github.workspace }}
-          if [[ "${{ steps.check_packages_changed.outputs.packages_changed }}" == "true" ]]; then
-            npx lerna version --conventional-commits --yes
-          else
-            echo "Skipping Lerna versioning as there are no changes in packages directory."
-          fi
-
       - name: Push changes
         run: |
           git push --follow-tags
+
 
 
 
