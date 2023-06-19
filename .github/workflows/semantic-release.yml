@@ -18,13 +18,11 @@ jobs:
       id: changed_files
       run: |
         echo "Changed files:"
-        git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+        git diff --name-only origin/main...${{ github.sha }}
 
     - name: Print changed files
       run: |
         echo "${{ steps.changed_files.outputs.stdout }}"
-
-
 
 # name: Versioning
 
