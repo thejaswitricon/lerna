@@ -20,6 +20,7 @@ jobs:
               folder_path=$(dirname "${changed_file}")
               echo "${folder_path}."
             fi
+              echo "no changes"
           done
 
 
