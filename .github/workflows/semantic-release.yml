@@ -3,8 +3,10 @@ name: Versioning
 on:
   push:
     branches:
-      - master  # Modify this according to your branch name
+      - master
+
 permissions: write-all
+
 jobs:
   versioning:
     runs-on: ubuntu-latest
@@ -16,20 +18,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Modify this according to your Node.js version requirements
+          node-version: 14
 
       - name: Install dependencies
         run: npm install lerna
+
+      - name: Get modified files
+        id: git-status
+        run: |
+          echo "::set-output name=modified_files::$(git diff --name-only --cached --diff-filter=AM)"
+
+      - name: Filter package.json files
+        id: filter-package-json
+        run: |
+          echo "::set-output name=package_json_files::$(echo "${{ steps.git-status.outputs.modified_files }}" | grep -E '(^|/)package\.json$' || true)"
 
       - name: Commit changes
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add package-lock.json package.json
+          git add ${{ steps.filter-package-json.outputs.package_json_files }}
           git commit -m "Committing changes before versioning"
-
-      - name: Initialize Lerna
-        run: npx lerna init --independent
 
       - name: Lerna versioning
         run: npx lerna version --conventional-commits --yes
@@ -39,6 +48,7 @@ jobs:
         with:
           branch: ${{ github.ref }}
           github_token: ${{ secrets.PAT_GITHUB2 }}
+
 
       # - name: Publish packages
       #   run: npx lerna publish from-git --yes
