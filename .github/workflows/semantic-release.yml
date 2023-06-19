@@ -30,8 +30,10 @@ jobs:
 
       - name: Lerna versioning
         run: |
+          cd ${{ github.workspace }}
           npx lerna version --conventional-commits --conventional-graduate --yes
           npx lerna publish from-git --yes
+
 
 
 
