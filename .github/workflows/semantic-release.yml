@@ -28,13 +28,18 @@ jobs:
           git config --global user.name "Your Name"
           git config --global user.email "your-email@example.com"
 
-      - name: lerna changed
+      - name: Determine changed packages
+        run: npx lerna changed --json > changed-packages.json
+
+      - name: Extract package names
         run: |
-          npx lerna changed
+          PACKAGE_NAMES=$(jq -r ".[].name" changed-packages.json)
+          echo "::set-env name=PACKAGE_NAMES::$PACKAGE_NAMES"
 
       - name: Lerna versioning
         run: |
-          npx lerna version --conventional-commits --yes --since=HEAD~1
+          npx lerna version --conventional-commits --yes --exact --force-publish=$PACKAGE_NAMES
+          npx lerna publish from-git --yes
           
 
 
