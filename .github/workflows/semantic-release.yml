@@ -28,6 +28,8 @@ jobs:
           git add package-lock.json package.json
           git commit -m "Committing changes before versioning"
 
+      - name: Initialize Lerna
+        run: npx lerna init --independent
 
       - name: Lerna versioning
         run: npx lerna version --conventional-commits --yes
