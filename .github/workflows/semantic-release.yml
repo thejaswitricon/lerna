@@ -34,7 +34,7 @@ jobs:
 
       - name: Lerna versioning
         run: |
-          npx lerna version --conventional-commits --yes --since
+          npx lerna version --conventional-commits --yes --since=HEAD~1
           
 
 
