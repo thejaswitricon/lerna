@@ -14,15 +14,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Get changed directories
-      id: changed_dirs
-      run: |
-        echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ '{print $0}' | sort -u)"
-      
-
-    - name: Print changed directories
-      run: |
-        echo "Changed directories: ${{ steps.changed_dirs.outputs.dirs }}"
+    - run: |
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            if [[ $changed_file == *"packages"* ]]; then
+              folder_path=$(dirname "${changed_file}")
+              echo "${folder_path}."
+            fi
+          done
 
 
 
