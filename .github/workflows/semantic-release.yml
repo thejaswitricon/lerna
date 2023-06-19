@@ -28,6 +28,10 @@ jobs:
           git config --global user.name "Your Name"
           git config --global user.email "your-email@example.com"
 
+      - name: lerna changed
+        run: |
+          lerna changed
+
       - name: Lerna versioning
         run: |
           npx lerna version --conventional-commits --yes
