@@ -3,7 +3,7 @@ name: Versioning
 on:
   push:
     branches:
-      - master
+      - mster
 
 permissions: write-all
 
