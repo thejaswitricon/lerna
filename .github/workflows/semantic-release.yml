@@ -14,21 +14,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Get changed files
-      id: changed_files
+    - name: Get changed directories
+      id: changed_dirs
       run: |
-        echo "Changed files:"
-        git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-
-    - name: Extract file name
-      id: extract_file_name
-      run: |
-        echo "::set-output name=file_name::$(basename ${GITHUB_WORKSPACE}/${{ steps.changed_files.outputs.stdout }})"
-    
-    - name: Print file name
-      run: |
-        echo "Changed file name: ${{ steps.extract_file_name.outputs.file_name }}"
-
+        echo "::set-output name=dirs::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | awk -F/ '{print $0}' | sort -u)"
+      
 
 
 
