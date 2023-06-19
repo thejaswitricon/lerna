@@ -31,7 +31,8 @@ jobs:
       - name: Lerna versioning
         run: |
           cd ${{ github.workspace }}
-          npx lerna version --conventional-commits --conventional-graduate --yes
+          lerna changed
+          npx lerna version --conventional-commits --yes
           
 
 
