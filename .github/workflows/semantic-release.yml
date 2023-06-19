@@ -25,7 +25,7 @@ jobs:
       - name: Check for changes in packages folder
         id: check_changes
         run: |
-          echo "::set-output name=changed::$(git diff --name-only HEAD^..HEAD packages)"
+          echo "::set-output name=changed::$(git diff --name-only ${{ github.event.before }}...${{ github.sha }} -- packages)"
 
       - name: Commit changes
         run: |
