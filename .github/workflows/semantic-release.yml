@@ -30,7 +30,6 @@ jobs:
 
       - name: Lerna versioning
         run: |
-          cd ${{ github.workspace }}
           lerna changed
           npx lerna version --conventional-commits --yes
           
