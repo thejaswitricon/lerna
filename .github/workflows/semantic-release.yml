@@ -23,35 +23,34 @@ jobs:
       - name: Install dependencies
         run: npm install lerna
 
-      - name: Check for changes
-        id: check-changes
-        run: |
-          git diff --name-only origin/master -- packages/ > changes.txt
-          cat changes.txt
-
-      - name: Print working tree status
-        run: git status
-
       - name: Commit changes
         run: |
-          if [[ -s "changes.txt" ]]; then
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git add -A
-            git add package-lock.json
-            git commit -m "Committing changes before versioning"
-          else
-            echo "No changes found in package.json files. Skipping commit."
-          fi
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add lerna.json
+          git commit -m "Committing changes before versioning"
+
+      - name: Get changed packages
+        id: changed-packages
+        run: |
+          changed_packages=$(git diff --name-only HEAD~1 HEAD | grep "packages/" | cut -d/ -f2- | cut -d/ -f1 | sort -u)
+          echo "::set-output name=packages::$changed_packages"
 
       - name: Lerna versioning
-        run: npx lerna version --conventional-commits --yes
+        run: |
+          changed_packages=${{ steps.changed-packages.outputs.packages }}
+          if [[ -n $changed_packages ]]; then
+            npx lerna version --conventional-commits --yes --scope $changed_packages
+          else
+            echo "No packages changed, skipping versioning."
+          fi
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           branch: ${{ github.ref }}
           github_token: ${{ secrets.PAT_GITHUB2 }}
+
 
 
 
