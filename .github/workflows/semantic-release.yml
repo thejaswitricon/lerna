@@ -29,6 +29,9 @@ jobs:
           git diff --name-only origin/master -- packages/ > changes.txt
           cat changes.txt
 
+      - name: Print working tree status
+        run: git status
+
       - name: Commit changes
         run: |
           if [[ -s "changes.txt" ]]; then
