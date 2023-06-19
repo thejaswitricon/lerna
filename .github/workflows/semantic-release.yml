@@ -1,4 +1,4 @@
-name: Extract Changed File
+name: Print Changed Files
 
 on:
   push:
@@ -7,21 +7,22 @@ on:
 permissions: write-all
 
 jobs:
-  extract_file:
+  print_changed_files:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            if [[ $changed_file == *"packages"* ]]; then
-              folder_path=$(dirname "${changed_file}")
-              echo "${folder_path}."
-            fi
-              echo "no changes"
-          done
+    - name: Get changed files
+      id: changed_files
+      run: |
+        echo "Changed files:"
+        git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+
+    - name: Print changed files
+      run: |
+        echo "${{ steps.changed_files.outputs.stdout }}"
 
 
 
