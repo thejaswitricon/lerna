@@ -1,9 +1,9 @@
-name: Lerna Versioning
+name: Versioning
 
 on:
   push:
     branches:
-      - master
+      - master  # Modify this according to your branch name
 permissions: write-all
 
 jobs:
@@ -14,46 +14,35 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 14  # Modify this according to your Node.js version requirements
 
       - name: Install dependencies
-        run: npm install
+        run: npm install lerna
 
       - name: Check for changes in packages folder
         id: check_changes
         run: |
           echo "::set-output name=changed::$(git diff --name-only HEAD^..HEAD packages)"
 
-      - name: Run Lerna version
-        if: steps.check_changes.outputs.changed
+      - name: Commit changes
         run: |
-          cd ${{ github.workspace }}
-          npx lerna version --conventional-commits --yes
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add package-lock.json package.json
+          git commit -m "Committing changes before versioning"
 
-      - name: Commit changes to package-lock.json
-        run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "your-email@example.com"
-          git add package-lock.json
-          git commit -m "Committing changes to package-lock.json"
+      - name: Lerna versioning
+        if: steps.check_changes.outputs.changed
+        run: npx lerna version --conventional-commits --yes
 
       - name: Push changes
-        run: |
-          git push --follow-tags
-
-
-
-
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@v0.6.0
-      #   with:
-      #     branch: ${{ github.ref }}
-      #     tags: true
-      #     github_token: ${{ secrets.PAT_GITHUB2 }}
-
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: ${{ github.ref }}
+          github_token: ${{ secrets.PAT_GITHUB2 }}
 
 
 
