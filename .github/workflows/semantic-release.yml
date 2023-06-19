@@ -32,11 +32,13 @@ jobs:
         run: npx lerna changed --json > changed-packages.json
 
       - name: Extract package names
+        id: extract-packages
         run: |
-          PACKAGE_NAMES=$(jq -r ".[].name" changed-packages.json)
-          echo "::set-env name=PACKAGE_NAMES::$PACKAGE_NAMES"
+          echo "::set-output name=package_names::$(jq -r ".[].name" changed-packages.json)"
 
       - name: Lerna versioning
+        env:
+          PACKAGE_NAMES: ${{ steps.extract-packages.outputs.package_names }}
         run: |
           npx lerna version --conventional-commits --yes --exact --force-publish=$PACKAGE_NAMES
           npx lerna publish from-git --yes
