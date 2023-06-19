@@ -30,7 +30,7 @@ jobs:
 
       - name: lerna changed
         run: |
-          lerna changed
+          npx lerna changed
 
       - name: Lerna versioning
         run: |
