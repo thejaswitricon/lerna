@@ -30,7 +30,7 @@ jobs:
 
       - name: Lerna versioning
         run: |
-          npx lerna version --conventional-commits --yes
+          npx lerna version --conventional-commits --conventional-graduate --yes
           npx lerna publish from-git --yes
 
 
