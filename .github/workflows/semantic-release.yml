@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-permissions: write-all
 
 jobs:
   print_changed_files:
@@ -23,6 +22,7 @@ jobs:
     - name: Print changed files
       run: |
         echo "${{ steps.changed_files.outputs.stdout }}"
+
 
 # name: Versioning
 
