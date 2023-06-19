@@ -1,27 +1,54 @@
-name: Print Changed Files
+name: Versioning
 
 on:
   push:
     branches:
       - master
 
+permissions: write-all
+
 jobs:
-  print_changed_files:
+  versioning:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Get changed files
-      id: changed_files
-      run: |
-        echo "Changed files:"
-        git diff --name-only origin/master...${{ github.sha }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
 
-    - name: Print changed files
-      run: |
-        echo "${{ steps.changed_files.outputs.stdout }}"
+      - name: Install dependencies
+        run: npm install lerna
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          git diff --name-only HEAD^ HEAD | grep '^packages' > changes.txt
+          cat changes.txt
+
+      - name: Commit changes
+        run: |
+          if [[ -s "changes.txt" ]]; then
+            git config user.name "${{ github.actor }}"
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+            git add -A
+            git commit -m "Committing changes before versioning"
+          else
+            echo "No changes found in package.json files. Skipping commit."
+          fi
+
+      - name: Lerna versioning
+        run: npx lerna version --conventional-commits --yes
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: ${{ github.ref }}
+          github_token: ${{ secrets.PAT_GITHUB2 }}
+
 
 
 # name: Versioning
