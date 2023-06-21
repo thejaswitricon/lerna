@@ -23,12 +23,9 @@ jobs:
 
       - name: Print Changed Files
         run: |
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.ref }}:refs/remotes/origin/${{ github.ref }}
-          changed_files=$(git --no-pager diff --name-only origin/${{ github.ref }})
+          git fetch --depth=1 origin ${GITHUB_REF}
+          git diff --name-only HEAD FETCH_HEAD
 
-          echo "Changed files:"
-          echo "${changed_files}"
-          
       # - name: Commit changes
       #   run: |
       #     git config user.name "${{ github.actor }}"
