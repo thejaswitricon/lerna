@@ -34,12 +34,12 @@ jobs:
 
       - name: Extract Tag Name
         id: extract_tag
-        run: echo "::set-output name=tag::${{ github.ref }}"
+        run: echo "::set-output name=tag::${{ github.ref_replace('refs/tags/', '') }}"
 
       - name: Create GitHub Release
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAT_GITHUB2 }}
           script: |
             const { data } = await github.repos.createRelease({
               owner: context.repo.owner,
