@@ -32,17 +32,21 @@ jobs:
       - name: Print Changed Files
         run: npx lerna changed --json
 
+      - name: Extract Tag Name
+        id: extract_tag
+        run: echo "::set-output name=tag::${{ github.ref }}"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ''  # Specify the files to include in the release if needed
-          tag_name: ${{ github.ref }}
-          name: Release ${{ github.ref }}
+          files: ''
+          tag_name: ${{ steps.extract_tag.outputs.tag }}
+          name: Release ${{ steps.extract_tag.outputs.tag }}
           body: 'Enter release notes here'
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Commit changes
       #   run: |
