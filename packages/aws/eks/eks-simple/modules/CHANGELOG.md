@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.34](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.8.33...@eks-simple/app1@1.8.34) (2023-06-21)
+
+
+### Bug Fixes
+
+* **root:** index.js ([b57f4d5](https://github.com/thejaswitricon/lerna/commit/b57f4d5198295e27f5ee85873338ae2eeee1eed1))
+
+
+
+
+
 ## [1.8.33](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.8.32...@eks-simple/app1@1.8.33) (2023-06-21)
 
 
