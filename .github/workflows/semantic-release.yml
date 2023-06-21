@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master  # Modify this according to your branch name
+
+    tags:
+      - "*"
 permissions: write-all
 jobs:
   versioning:
@@ -37,9 +40,25 @@ jobs:
       #     git commit -m "Committing changes before versioning"
 
 
-      - name: Lerna versioning
-        run: |
-          npx lerna version --conventional-commits --yes
+      - name: Create Git Release
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const tag = context.ref.replace('refs/tags/', '');
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+            const { owner, repo } = context.repo;
+
+            const createReleaseResponse = await octokit.rest.repos.createRelease({
+              owner,
+              repo,
+              tag_name: tag,
+              name: `Release ${tag}`,
+              body: 'Enter release notes here',
+              draft: false,
+              prerelease: false
+            });
+
+            console.log(`Created release ${createReleaseResponse.data.name} (${createReleaseResponse.data.tag_name})`);
 
       # - name: Push changes
       #   uses: ad-m/github-push-action@v0.6.0
