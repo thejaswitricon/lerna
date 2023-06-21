@@ -38,6 +38,9 @@ jobs:
         run: |
           npx lerna version --conventional-commits --yes
 
+      - name: Print Changed Files
+        run: npx lerna changed --json
+
       # - name: Push changes
       #   uses: ad-m/github-push-action@v0.6.0
       #   with:
