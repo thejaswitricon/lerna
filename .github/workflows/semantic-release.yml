@@ -37,16 +37,20 @@ jobs:
         run: echo "::set-output name=tag::${{ github.ref }}"
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: actions/github-script@v4
         with:
-          files: ''
-          tag_name: ${{ steps.extract_tag.outputs.tag }}
-          name: Release ${{ steps.extract_tag.outputs.tag }}
-          body: 'Enter release notes here'
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data } = await github.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: '${{ steps.extract_tag.outputs.tag }}',
+              name: 'Release ${{ steps.extract_tag.outputs.tag }}',
+              body: 'Enter release notes here',
+              draft: false,
+              prerelease: false
+            });
+            console.log('Created release:', data.html_url);
 
       # - name: Commit changes
       #   run: |
