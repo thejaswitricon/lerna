@@ -32,33 +32,24 @@ jobs:
       - name: Print Changed Files
         run: npx lerna changed --json
 
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ''
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: 'Enter release notes here'
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # - name: Commit changes
       #   run: |
       #     git config user.name "${{ github.actor }}"
       #     git config user.email "${{ github.actor }}@users.noreply.github.com"
       #     git add package-lock.json package.json
       #     git commit -m "Committing changes before versioning"
-
-
-      - name: Create Git Release
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const tag = context.ref.replace('refs/tags/', '');
-            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-            const { owner, repo } = context.repo;
-
-            const createReleaseResponse = await octokit.rest.repos.createRelease({
-              owner,
-              repo,
-              tag_name: tag,
-              name: `Release ${tag}`,
-              body: 'Enter release notes here',
-              draft: false,
-              prerelease: false
-            });
-
-            console.log(`Created release ${createReleaseResponse.data.name} (${createReleaseResponse.data.tag_name})`);
 
       # - name: Push changes
       #   uses: ad-m/github-push-action@v0.6.0
