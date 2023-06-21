@@ -35,14 +35,14 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ''
+          files: ''  # Specify the files to include in the release if needed
           tag_name: ${{ github.ref }}
           name: Release ${{ github.ref }}
           body: 'Enter release notes here'
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB2 }}
 
       # - name: Commit changes
       #   run: |
