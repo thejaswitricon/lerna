@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.8.36 (2023-06-22)
+
+**Note:** Version bump only for package @eks-simple/app1
+
+
+
+
+
 ## 1.8.35 (2023-06-22)
 
 **Note:** Version bump only for package @eks-simple/app1
