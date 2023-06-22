@@ -1,9 +1,9 @@
 name: Versioning
 
 on:
-  push:
+  pull_request:
     branches:
-      - master  # Modify this according to your branch name
+      - master
 
 permissions: write-all
 jobs:
