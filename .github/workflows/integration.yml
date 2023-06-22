@@ -25,6 +25,10 @@ jobs:
           npm set @xcanchal:registry=https://npm.pkg.github.com/xcanchal
           npm set "//npm.pkg.github.com/:_authToken=${{ secrets.PAT_GITHUB2 }}"
 
+      - name: Update
+        run: |
+          npm install
+
       - name: Install dependencies
         run: |
           npm ci
