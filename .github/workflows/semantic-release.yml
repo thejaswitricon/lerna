@@ -2,33 +2,42 @@ name: Versioning
 
 on:
   pull_request:
+    types: [closed]
     branches:
       - master
 
 permissions: write-all
 jobs:
   versioning:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: "Checkout"
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14  # Modify this according to your Node.js version requirements
+    - name: "Use NodeJS 14"
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-      - name: Install dependencies
-        run: npm install 
+    - name: Print Changed Files
+      run: |
+        git fetch --depth=1 origin ${GITHUB_REF}
+        git diff --name-only HEAD FETCH_HEAD
 
-      - name: Print Changed Files
-        run: |
-          git fetch --depth=1 origin ${GITHUB_REF}
-          git diff --name-only HEAD FETCH_HEAD
+    - name: Print Changed Files
+      run: npx lerna changed --json
 
-      - name: Print Changed Files
-        run: npx lerna changed --json
+    - name: "Version and publish" # Interesting step
+      env:
+        GH_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+        npx lerna version --conventional-commits --yes
 
       # - name: Commit changes
       #   run: |
