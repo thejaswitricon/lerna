@@ -29,7 +29,9 @@ jobs:
         git diff --name-only HEAD FETCH_HEAD
 
     - name: Print Changed Files
-      run: npx lerna changed --json
+      run: |
+        npx lerna init --independent
+        npx lerna changed --json
 
     - name: "Version and publish" # Interesting step
       env:
