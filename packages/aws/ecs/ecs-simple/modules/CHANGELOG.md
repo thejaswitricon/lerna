@@ -4,14 +4,8 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.1.58](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.1.56...@ecs-simple/app2@1.1.58) (2023-06-22)
-
-**Note:** Version bump only for package @ecs-simple/app2
-
-
-
-
-
-## [1.1.57](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.1.56...@ecs-simple/app2@1.1.57) (2023-06-22)
+=======
+## 1.1.57 (2023-06-22)
 
 **Note:** Version bump only for package @ecs-simple/app2
 
