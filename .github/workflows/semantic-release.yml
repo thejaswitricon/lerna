@@ -32,10 +32,16 @@ jobs:
         git fetch --depth=1 origin ${GITHUB_REF}
         git diff --name-only HEAD FETCH_HEAD
 
-    # - name: Print Changed Files
-    #   run: |
-    #     npx lerna init --independent
-    #     npx lerna changed --json
+    - name: Commit changes
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git checkout -- package-lock.json
+
+    - name: Print Changed Files
+      run: |
+        npx lerna init --independent
+        npx lerna changed --json
 
     - name: "Version and publish" # Interesting step
       env:
