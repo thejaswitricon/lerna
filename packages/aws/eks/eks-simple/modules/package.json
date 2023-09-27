@@ -1,6 +1,6 @@
 {
   "name": "@eks-simple/app1",
-  "version": "1.8.38",
+  "version": "1.8.41",
   "description": "",
   "main": "index.js",
   "scripts": {
