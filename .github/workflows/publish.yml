@@ -1,15 +1,11 @@
 name: publish
 on:
-  # When Release Pull Request is merged
   pull_request:
+    types: [closed]
     branches:
       - master
-    types: [closed]
 
-permissions:
-  contents: write # for checkout and tag
-  pull-requests: write  # for comments
-  packages: write # for publish
+permissions: write-all
 jobs:
   versioning:
     if: github.event.pull_request.merged == true
