@@ -1,8 +1,8 @@
-name: Versioning
+# name: Versioning
 
-on:
-  pull_request:
-    types: [opened, synchronize]
+# on:
+#   pull_request:
+#     types: [opened, synchronize]
 
 permissions: write-all
 jobs:
