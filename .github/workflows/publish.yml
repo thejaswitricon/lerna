@@ -1,6 +1,7 @@
 name: publish
 on:
   push:
+    branches:
       - master
 
 permissions: write-all
