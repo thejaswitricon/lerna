@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.60](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.1.59...@ecs-simple/app2@1.1.60) (2023-06-22)
+
+
+### Bug Fixes
+
+* **root:** semantic release ([d6ad3ec](https://github.com/thejaswitricon/lerna/commit/d6ad3ecd764db58e40f7e64f96e7e2f5510a0a09))
+
+
+
+
+
+## [1.1.59](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.1.58...@ecs-simple/app2@1.1.59) (2023-06-22)
+
+
+### Bug Fixes
+
+* **root:** test ([e2d79f7](https://github.com/thejaswitricon/lerna/commit/e2d79f7fc85c22ade97fa427976c39701946fa06))
+
+
+
+
+
+
 ## [1.1.58](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.1.56...@ecs-simple/app2@1.1.58) (2023-06-22)
 =======
 ## 1.1.57 (2023-06-22)
