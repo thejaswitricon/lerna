@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.2.0...@ecs-simple/app2@1.2.1) (2023-09-27)
+
+
+### Performance Improvements
+
+* bump major version ([1286f97](https://github.com/thejaswitricon/lerna/commit/1286f9787225fefdd0065bb8f0133e815b3cc37a))
+
+
+
+
+
 # [1.2.0](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.1.67...@ecs-simple/app2@1.2.0) (2023-09-27)
 
 
