@@ -41,13 +41,13 @@ jobs:
         npx lerna init --independent
         npx lerna changed --json
 
-    - name: "Version and publish" # Interesting step
-      env:
-        GH_TOKEN: ${{ secrets.PAT_GITHUB2 }}
-      run: |
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor}}@users.noreply.github.com"
-        npx lerna version --conventional-commits --changelog-preset --yes
+    # - name: "Version and publish" # Interesting step
+    #   env:
+    #     GH_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+    #   run: |
+    #     git config user.name "${{ github.actor }}"
+    #     git config user.email "${{ github.actor}}@users.noreply.github.com"
+    #     npx lerna version --conventional-commits --changelog-preset --yes
 
       # - name: Commit changes
       #   run: |
