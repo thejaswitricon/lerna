@@ -43,13 +43,34 @@ jobs:
         npx lerna diff
 
 
-    - name: "Version and publish" # Interesting step
+    - name: "Version and publish" 
       env:
         GH_TOKEN: ${{ secrets.PAT_GITHUB2 }}
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
         npx lerna publish --yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       # - name: Commit changes
       #   run: |
