@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.2.1...@ecs-simple/app2@1.2.2) (2023-10-03)
+
+
+### Bug Fixes
+
+* demo commit ([68e0e54](https://github.com/thejaswitricon/lerna/commit/68e0e54f1ebf1b8a5a8374ca3a4d4d7a0004bb44))
+* demo commit ([ecef750](https://github.com/thejaswitricon/lerna/commit/ecef750a57642adfd683adaf89079b24f4e1648b))
+* demo commit ([600f111](https://github.com/thejaswitricon/lerna/commit/600f111b2a97778370e4570d82fe2949bc9db3c1))
+* demo commit ([0ba1d0a](https://github.com/thejaswitricon/lerna/commit/0ba1d0a3d8e07bd48cc20b54ceb45926fa563b2e))
+
+
+### Performance Improvements
+
+* bump major version ([1286f97](https://github.com/thejaswitricon/lerna/commit/1286f9787225fefdd0065bb8f0133e815b3cc37a))
+* demo ([deea3e2](https://github.com/thejaswitricon/lerna/commit/deea3e20bfff62ee73e57357163fb87b5d65c019))
+
+
+
+
+
 ## [1.2.1](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.2.0...@ecs-simple/app2@1.2.1) (2023-09-27)
 
 

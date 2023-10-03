@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.8.43 (2023-10-03)
+
+
+### Bug Fixes
+
+* demo commit ([6c142de](https://github.com/thejaswitricon/lerna/commit/6c142de51f91a4e503aaf606eea524eb712ca1ea))
+* demo commit ([58fd0eb](https://github.com/thejaswitricon/lerna/commit/58fd0ebad10e52d85ee51cb22339694171b8f2e3))
+* demo commit ([68e0e54](https://github.com/thejaswitricon/lerna/commit/68e0e54f1ebf1b8a5a8374ca3a4d4d7a0004bb44))
+* demo commit ([ecef750](https://github.com/thejaswitricon/lerna/commit/ecef750a57642adfd683adaf89079b24f4e1648b))
+* demo commit ([600f111](https://github.com/thejaswitricon/lerna/commit/600f111b2a97778370e4570d82fe2949bc9db3c1))
+
+
+
+
+
 ## [1.8.42](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.8.37...@eks-simple/app1@1.8.42) (2023-09-27)
 
 **Note:** Version bump only for package @eks-simple/app1
