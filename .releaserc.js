@@ -5,12 +5,12 @@ module.exports = {
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
-      [
-        "@semantic-release/exec",
-        {
-          prepareCmd: "npx lerna version --conventional-commits --yes",
-        },
-      ],
+    //   [
+    //     "@semantic-release/exec",
+    //     {
+    //       prepareCmd: "npx lerna version --conventional-commits --yes",
+    //     },
+    //   ],
       [
         "@semantic-release/git",
         {
