@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.4.0...@ecs-simple/app2@2.0.0) (2023-10-03)
+
+
+### Features
+
+* **package-name:** add new feature ([c2c4741](https://github.com/thejaswitricon/lerna/commit/c2c4741e0313852803e8d203a1e011211febd4c2))
+
+
+### BREAKING CHANGES
+
+* **package-name:** major change.
+
+
+
+
+
 # 1.4.0 (2023-10-03)
 
 
