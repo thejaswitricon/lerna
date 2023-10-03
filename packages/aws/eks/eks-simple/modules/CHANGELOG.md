@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.10.1...@eks-simple/app1@1.10.2) (2023-10-03)
+
+
+### Bug Fixes
+
+* update eks-simple and ecs-simple modules ([8594c9e](https://github.com/thejaswitricon/lerna/commit/8594c9e496459a7cd912bcad937bc4fca91ffd42))
+
+
+
+
+
 ## 1.10.1 (2023-10-03)
 
 
