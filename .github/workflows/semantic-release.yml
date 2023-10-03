@@ -48,23 +48,4 @@ jobs:
         run: |
           npx semantic-release
 
-    # - name: "Version and publish" # Interesting step
-    #   env:
-    #     GH_TOKEN: ${{ secrets.PAT_GITHUB2 }}
-    #   run: |
-    #     git config user.name "${{ github.actor }}"
-    #     git config user.email "${{ github.actor}}@users.noreply.github.com"
-    #     npx lerna publish --yes
-
-      # - name: Commit changes
-      #   run: |
-      #     git config user.name "${{ github.actor }}"
-      #     git config user.email "${{ github.actor }}@users.noreply.github.com"
-      #     git add package-lock.json package.json
-      #     git commit -m "Committing changes before versioning"
-
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@v0.6.0
-      #   with:
-      #     branch: ${{ github.ref }}
-      #     github_token: ${{ secrets.PAT_GITHUB2 }}
+    
