@@ -6,9 +6,8 @@
     "packages/aws/ecs/ecs-simple/*"
   ],
   "scripts": {
-    "test": "lerna run test",
-    "new-version": "lerna version --conventional-commits --yes",
-    "diff": "lerna diff"
+    "changed": "lerna changed --json",
+    "new-version": "lerna publish --yes"
   },
   "repository": {
     "type": "git",
