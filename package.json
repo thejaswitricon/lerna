@@ -22,9 +22,12 @@
   "homepage": "https://github.com/thejaswitricon/lerna#readme",
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.0.3",
+    "@semantic-release/github": "^9.2.1",
+    "@semantic-release/release-notes-generator": "^12.0.0",
     "lerna": "^6.6.2",
-    "semantic-release": "^21.0.5"
+    "semantic-release": "^21.1.2"
   }
 }
