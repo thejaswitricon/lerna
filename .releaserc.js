@@ -1,60 +1,25 @@
-/**
- * Release configuration for the monorepo
- *
- * For more info;
- * - https://github.com/Updater/semantic-release-monorepo
- * - https://github.com/semantic-release/semantic-release
- * - https://github.com/lerna/lerna
- */
-
 module.exports = {
-    branch: 'master',
-    // tagFormat: 'v${version}',
-    monorepo: {
-      analyzeCommits: [
-        '@semantic-release/commit-analyzer'
+    branches: ["master"], // Set the branch you want to trigger releases on
+  
+    plugins: [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/exec",
+        {
+          prepareCmd: "npx lerna version ${nextRelease.version} --exact --yes",
+        },
       ],
-      generateNotes: [
-        '@semantic-release/release-notes-generator'
-      ]
-    },
-    /**
-     * Move plugins from verifyConditions to verifyRelease to
-     * reduce expensive network calls (50%+ runtime reduction).
-     * https://github.com/Updater/semantic-release-monorepo#reduce-expensive-network-calls-50-runtime-reduction
-     */
-    verifyConditions: [],
-    verifyRelease: [
-      '@semantic-release/changelog',
-      '@semantic-release/npm',
-      '@semantic-release/git',
-      '@semantic-release/github'
-    ]
-      .map(require)
-      .map(x => x.verifyConditions),
-    prepare: [
-      {
-        path: '@semantic-release/changelog',
-        changelogTitle: '# CHANGELOG'
-      },
-      '@semantic-release/npm',
-      {
-        'path': '@semantic-release/git',
-        'message': 'chore(release): ${nextRelease.gitTag} [skip ci]\n\n${nextRelease.notes}'
-      }
+      [
+        "@semantic-release/git",
+        {
+          assets: ["package.json", "CHANGELOG.md"],
+          message:
+            "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        },
+      ],
+      "@semantic-release/github",
     ],
-    publish: [
-      {
-        path: '@semantic-release/exec',
-        cmd: 'echo "Execute publish/deploy commands and scripts"'
-      },
-      '@semantic-release/npm',
-      '@semantic-release/github'
-    ],
-    success: [
-      '@semantic-release/github'
-    ],
-    fail: [
-      '@semantic-release/github'
-    ]
   };
+  
