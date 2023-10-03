@@ -40,7 +40,6 @@ jobs:
       run: |
         npx lerna init --independent
         npx lerna changed --json
-        npx lerna diff
 
 
     - name: "Version and publish" # Interesting step
