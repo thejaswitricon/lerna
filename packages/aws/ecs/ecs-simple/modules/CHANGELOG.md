@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.2.3...@ecs-simple/app2@1.3.0) (2023-10-03)
+
+
+### Features
+
+* feature update ([facd59c](https://github.com/thejaswitricon/lerna/commit/facd59c2691ecd4c87d82b701d9cf022ec13fabc))
+
+
+
+
+
 ## 1.2.3 (2023-10-03)
 
 
