@@ -43,9 +43,10 @@ jobs:
         npx lerna diff
 
     - name: Semantic Release
-        run: npx semantic-release
         env:
           GH_TOKEN: ${{ secrets.PAT_GITHUB2 }}
+        run: |
+          npx semantic-release
 
     # - name: "Version and publish" # Interesting step
     #   env:
