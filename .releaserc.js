@@ -8,7 +8,7 @@ module.exports = {
       [
         "@semantic-release/exec",
         {
-          prepareCmd: "npx lerna version ${nextRelease.version} --exact --yes",
+          prepareCmd: "npx lerna version --conventional-commits --yes",
         },
       ],
       [
