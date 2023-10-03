@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.3 (2023-10-03)
+
+
+### Bug Fixes
+
+* demo commit ([60a4f77](https://github.com/thejaswitricon/lerna/commit/60a4f7738a82ad007740ac5f0864e9886650c880))
+
+
+
+
+
 ## [1.2.2](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@1.2.1...@ecs-simple/app2@1.2.2) (2023-10-03)
 
 
