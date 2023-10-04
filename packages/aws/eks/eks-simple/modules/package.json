@@ -1,10 +1,12 @@
 {
   "name": "@eks-simple/app1",
-  "version": "1.10.3",
+  "version": "1.10.2",
   "description": "",
   "main": "index.js",
   "private": true,
-  
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
     "test": "echo testing server with version: $npm_package_version "
   },
@@ -14,5 +16,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "UNLICENSED"
+  "license": "MIT"
 }
