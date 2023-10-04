@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@2.0.4...@ecs-simple/app2@2.0.5) (2023-10-04)
+
+
+### Bug Fixes
+
+* update ecs and eks modules ([8a01bfc](https://github.com/thejaswitricon/lerna/commit/8a01bfcf94a4c66b0b9e43959a836709be6dbdd5))
+
+
+
+
+
 ## [2.0.4](https://github.com/thejaswitricon/lerna/compare/@ecs-simple/app2@2.0.3...@ecs-simple/app2@2.0.4) (2023-10-04)
 
 
