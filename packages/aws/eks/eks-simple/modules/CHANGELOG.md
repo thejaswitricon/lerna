@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.4](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.10.3...@eks-simple/app1@1.10.4) (2023-10-04)
+
+
+### Bug Fixes
+
+* **ecs-simple-modules:** update index.js ([5ebd979](https://github.com/thejaswitricon/lerna/commit/5ebd9790078c251537d77206cec9882253b75f2a))
+* **eks-simple-modules:** update index.js ([e97eb71](https://github.com/thejaswitricon/lerna/commit/e97eb713e4345a96c3c9d3547a9c2c0e0b7d96af))
+* **eks-simple-modules:** update index.js ([5669b3a](https://github.com/thejaswitricon/lerna/commit/5669b3a3ac302fd452b98a366b47d6eaf937d414))
+* **eks-simple-modules:** update index.js ([a8e7018](https://github.com/thejaswitricon/lerna/commit/a8e7018b434c4c8141c61c140869a2476814113f))
+* **eks-simple-modules:** update index.js ([aaf7a62](https://github.com/thejaswitricon/lerna/commit/aaf7a624438820601dee15f38c76565f52133cf5))
+* **eks-simple-modules:** update index.js ([a0e07ad](https://github.com/thejaswitricon/lerna/commit/a0e07ad2ffe00cd03be3479f1c4c8130c0c0cf64))
+* **eks-simple-modules:** update index.js ([50e3627](https://github.com/thejaswitricon/lerna/commit/50e36276ee66727ac9248ad66d462ff05786ac12))
+* **eks-simple-modules:** update index.js ([2b5dc26](https://github.com/thejaswitricon/lerna/commit/2b5dc261317c0446405a0356a8405e7686a1d7fc))
+* update index.js ([9541395](https://github.com/thejaswitricon/lerna/commit/9541395054b86b5c599d845d8a561eb8ecc7495a))
+* update index.js ([367bdc0](https://github.com/thejaswitricon/lerna/commit/367bdc08f64465fb04d3467693c8412a00ce0502))
+* update package.json ([1f70171](https://github.com/thejaswitricon/lerna/commit/1f7017101af94595b60c4fe152dcac2bdc529ee5))
+
+
+
+
+
 ## [1.10.3](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.10.2...@eks-simple/app1@1.10.3) (2023-10-04)
 
 
