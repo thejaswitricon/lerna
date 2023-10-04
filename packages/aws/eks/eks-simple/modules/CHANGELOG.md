@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.8](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.10.7...@eks-simple/app1@1.10.8) (2023-10-04)
+
+**Note:** Version bump only for package @eks-simple/app1
+
+
+
+
+
 ## [1.10.7](https://github.com/thejaswitricon/lerna/compare/@eks-simple/app1@1.10.6...@eks-simple/app1@1.10.7) (2023-10-04)
 
 
