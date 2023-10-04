@@ -1,6 +1,6 @@
 {
   "name": "lernaa",
-  "private": true,
+  "private": "true",
   "workspaces": [
     "packages/aws/eks/eks-simple/*",
     "packages/aws/ecs/ecs-simple/*"
@@ -8,9 +8,6 @@
   "scripts": {
     "changed": "lerna changed --json",
     "new-version": "lerna publish --yes"
-  },
-  "publishConfig": {
-    "access": "restricted"
   },
   "repository": {
     "type": "git",
