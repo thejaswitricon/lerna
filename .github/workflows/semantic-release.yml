@@ -40,6 +40,7 @@ jobs:
       run: |
         npx lerna init --independent
         npx lerna changed --json --include-private "*"
+        npx lerna diff 
       continue-on-error: true
 
 
