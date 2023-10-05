@@ -41,6 +41,7 @@ jobs:
         npx lerna init --independent
         npx lerna changed --json
         npx lerna diff
+      continue-on-error: true
 
 
     - name: "Version and publish" 
