@@ -9,8 +9,7 @@
       "license": "MIT"
     },
     "publish": {
-      "tempTag": true,
-      "ignoreChanges": ["private"]
+      "tempTag": true
     },
     "version": {
       "conventionalCommits": true,
